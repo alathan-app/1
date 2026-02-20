@@ -5,59 +5,199 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AlAthan — Support & Privacy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.6;
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 24px 20px;
-      color: #333;
+    :root {
+      --bg: #f8f7f4;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #5c5c5e;
+      --accent: #0a7c7e;
+      --accent-hover: #065f61;
+      --border: #e8e6e3;
+      --radius: 14px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.06);
+      --shadow-hover: 0 4px 20px rgba(0,0,0,0.08);
     }
-    h1 { font-size: 1.5rem; margin-top: 0; }
-    h2 { font-size: 1.15rem; margin-top: 2rem; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; }
-    p { margin: 0.75rem 0; }
-    a { color: #007AFF; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    section { margin-bottom: 2rem; }
-    .muted { color: #666; font-size: 0.9rem; }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1c;
+        --card: #252528;
+        --text: #f2f2f4;
+        --text-muted: #9898a0;
+        --accent: #5eb8ba;
+        --accent-hover: #7acccd;
+        --border: #3a3a3e;
+        --shadow: 0 2px 12px rgba(0,0,0,0.2);
+        --shadow-hover: 0 4px 20px rgba(0,0,0,0.25);
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 24px 48px;
+    }
+    header {
+      text-align: center;
+      padding: 32px 0 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 8px;
+      color: var(--text);
+    }
+    .tagline {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    section {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 24px;
+      margin-top: 24px;
+      border: 1px solid var(--border);
+    }
+    section:first-of-type { margin-top: 32px; }
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0 0 16px;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    section p {
+      margin: 0 0 14px;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    section p:last-child { margin-bottom: 0; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    a:hover { color: var(--accent-hover); }
+    .contact-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      padding: 14px 20px;
+      background: var(--bg);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+    .contact-box:hover { box-shadow: var(--shadow-hover); }
+    .contact-box a {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .contact-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    #privacy .policy-block {
+      margin-bottom: 20px;
+    }
+    #privacy .policy-block:last-child { margin-bottom: 0; }
+    #privacy .policy-block strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    #privacy .policy-block strong + * { margin-top: 0; }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    footer p { margin: 0; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>AlAthan</h1>
-    <p class="muted">Prayer times, Qibla & your daily companion</p>
-  </header>
+  <div class="wrap">
+    <header>
+      <h1 class="logo">AlAthan</h1>
+      <p class="tagline">Prayer times, Qibla & your daily companion</p>
+    </header>
 
-  <section id="support">
-    <h2>Support</h2>
-    <p>Support for AlAthan — prayer times, Qibla compass, and Live Activity.</p>
-    <p>For help, feedback, or questions about the app:</p>
-    <p><strong>Email:</strong> <a href="mailto:ios707@proton.me">ios707@proton.me</a></p>
-  </section>
+    <section id="support">
+      <h2>Support</h2>
+      <p>Need help, have feedback, or a question about AlAthan? We’re here for you.</p>
+      <span class="contact-label">Email</span>
+      <div class="contact-box">
+        <a href="mailto:ios707@proton.me">ios707@proton.me</a>
+      </div>
+    </section>
 
-  <section id="privacy">
-    <h2>Privacy Policy</h2>
-    <p>AlAthan (“the App”) provides prayer times, Qibla direction, and related features. This policy describes how we handle information.</p>
+    <section id="privacy">
+      <h2>Privacy Policy</h2>
+      <p>AlAthan (“the App”) provides prayer times, Qibla direction, and related features. This policy describes how we handle information.</p>
 
-    <p><strong>Location:</strong> The App uses your device location (or a location you choose) only to compute prayer times, moon data, and Qibla direction. Location can be stored on device for widgets and for your chosen city. We do not collect or store your location on our servers for advertising or tracking.</p>
+      <div class="policy-block">
+        <strong>Location</strong>
+        <p>The App uses your device location (or a location you choose) only to compute prayer times, moon data, and Qibla direction. Location can be stored on device for widgets and for your chosen city. We do not collect or store your location on our servers for advertising or tracking.</p>
+      </div>
+      <div class="policy-block">
+        <strong>Notifications</strong>
+        <p>Pre-athan, athan, iqama reminders, and Live Activity triggers are all local: they are scheduled and delivered entirely on your device. We may use a device token or push token; this is only used for delivering occasional notifications and is not used for marketing.</p>
+      </div>
+      <div class="policy-block">
+        <strong>Widgets & Live Activities</strong>
+        <p>Prayer times and countdowns shown on the Home Screen, Lock Screen, and Dynamic Island are generated on your device from your chosen location and settings. No personal data is sent to third parties for widgets or Live Activities.</p>
+      </div>
+      <div class="policy-block">
+        <strong>Quran Radio</strong>
+        <p>Streaming is provided by a third-party (mp3quran.net). Their own policies may apply to any data involved in streaming.</p>
+      </div>
+      <div class="policy-block">
+        <strong>Data we do not sell</strong>
+        <p>We do not sell your personal data. We do not use your data for advertising or cross-app tracking.</p>
+      </div>
+      <div class="policy-block">
+        <strong>Changes</strong>
+        <p>We may update this policy from time to time. The current text is always available in the app under Settings.</p>
+      </div>
+      <div class="policy-block">
+        <strong>Contact</strong>
+        <p>For questions about this policy or the App, reach out via the contact option in the About section of the app, or at <a href="mailto:ios707@proton.me">ios707@proton.me</a>.</p>
+      </div>
+    </section>
 
-    <p><strong>Notifications:</strong> Pre-athan, athan, iqama reminders, and Live Activity triggers are all local: they are scheduled and delivered entirely on your device. We may use a device token or push token; this is only used for delivering occasional notifications and is not used for marketing.</p>
-
-    <p><strong>Widgets & Live Activities:</strong> Prayer times and countdowns shown on the Home Screen, Lock Screen, and Dynamic Island are generated on your device from your chosen location and settings. No personal data is sent to third parties for widgets or Live Activities.</p>
-
-    <p><strong>Quran Radio:</strong> Streaming is provided by a third-party (mp3quran.net). Their own policies may apply to any data involved in streaming.</p>
-
-    <p><strong>Data we do not sell:</strong> We do not sell your personal data. We do not use your data for advertising or cross-app tracking.</p>
-
-    <p><strong>Changes:</strong> We may update this policy from time to time. The current text is always available in the app under Settings.</p>
-
-    <p><strong>Contact:</strong> For questions about this policy or the App, reach out via the contact option in the About section of the app, or at <a href="mailto:ios707@proton.me">ios707@proton.me</a>.</p>
-  </section>
-
-  <footer class="muted" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee;">
-    <p>© 2025 AlAthan. All rights reserved.</p>
-  </footer>
+    <footer>
+      <p>© 2026 AlAthan. All rights reserved.</p>
+    </footer>
+  </div>
 </body>
 </html>
