@@ -42,6 +42,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+    body[dir="rtl"] { letter-spacing: 0; }
     .wrap {
       max-width: 680px;
       margin: 0 auto;
@@ -49,8 +50,24 @@
     }
     header {
       text-align: center;
-      padding: 48px 0 56px;
+      padding: 48px 0 32px;
     }
+    .lang-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      font-size: 15px;
+      font-weight: 400;
+    }
+    .lang-switcher a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .lang-switcher a:hover { color: var(--link); }
+    .lang-switcher a.active { color: var(--link); font-weight: 500; }
+    .lang-switcher span { color: var(--border); user-select: none; }
     .logo {
       font-size: 48px;
       font-weight: 600;
@@ -59,6 +76,7 @@
       margin: 0 0 8px;
       color: var(--text);
     }
+    body[dir="rtl"] .logo { letter-spacing: 0; }
     .tagline {
       font-size: 21px;
       font-weight: 400;
@@ -67,6 +85,9 @@
       color: var(--text-secondary);
       margin: 0;
     }
+    body[dir="rtl"] .tagline { letter-spacing: 0; }
+    .content { display: none; }
+    .content.active { display: block; }
     section {
       background: var(--card);
       border-radius: var(--radius);
@@ -83,6 +104,7 @@
       margin: 0 0 20px;
       color: var(--text);
     }
+    body[dir="rtl"] h2 { letter-spacing: 0; }
     section > p,
     .policy-block p {
       margin: 0 0 16px;
@@ -91,6 +113,8 @@
       letter-spacing: -0.022em;
       color: var(--text);
     }
+    body[dir="rtl"] section > p,
+    body[dir="rtl"] .policy-block p { letter-spacing: 0; }
     section > p:last-child,
     .policy-block p:last-child { margin-bottom: 0; }
     a {
@@ -118,6 +142,7 @@
       color: var(--text-secondary);
       margin-bottom: 6px;
     }
+    body[dir="rtl"] .contact-label { letter-spacing: 0.03em; }
     #privacy .policy-block {
       margin-top: 32px;
       padding-top: 24px;
@@ -137,6 +162,7 @@
       color: var(--text-secondary);
       margin-bottom: 8px;
     }
+    body[dir="rtl"] #privacy .policy-block strong { letter-spacing: 0.03em; text-transform: none; }
     footer {
       text-align: center;
       margin-top: 56px;
@@ -153,56 +179,153 @@
 <body>
   <div class="wrap">
     <header>
+      <div class="lang-switcher">
+        <a href="#" id="lang-en" class="active">English</a>
+        <span>|</span>
+        <a href="#" id="lang-ar">العربية</a>
+      </div>
       <h1 class="logo">AlAthan</h1>
-      <p class="tagline">Prayer times, Qibla & your daily companion.</p>
+      <p class="tagline" data-en="Prayer times, Qibla & your daily companion." data-ar="أوقات الصلاة والقبلة ورفيقك اليومي.">Prayer times, Qibla & your daily companion.</p>
     </header>
 
-    <section id="support">
-      <h2>Support</h2>
-      <p>Need help, have feedback, or a question about AlAthan? We’re here for you.</p>
-      <span class="contact-label">Email</span>
-      <div class="contact-box">
-        <a href="mailto:ios707@proton.me">ios707@proton.me</a>
-      </div>
-    </section>
+    <!-- English -->
+    <div id="content-en" class="content active" lang="en">
+      <section id="support">
+        <h2>Support</h2>
+        <p>Need help, have feedback, or a question about AlAthan? We’re here for you.</p>
+        <span class="contact-label">Email</span>
+        <div class="contact-box">
+          <a href="mailto:ios707@proton.me">ios707@proton.me</a>
+        </div>
+      </section>
 
-    <section id="privacy">
-      <h2>Privacy Policy</h2>
-      <p>AlAthan (“the App”) provides prayer times, Qibla direction, and related features. This policy describes how we handle information.</p>
+      <section id="privacy">
+        <h2>Privacy Policy</h2>
+        <p>AlAthan (“the App”) provides prayer times, Qibla direction, and related features. This policy describes how we handle information.</p>
 
-      <div class="policy-block">
-        <strong>Location</strong>
-        <p>The App uses your device location (or a location you choose) only to compute prayer times, moon data, and Qibla direction. Location can be stored on device for widgets and for your chosen city. We do not collect or store your location on our servers for advertising or tracking.</p>
-      </div>
-      <div class="policy-block">
-        <strong>Notifications</strong>
-        <p>Pre-athan, athan, iqama reminders, and Live Activity triggers are all local: they are scheduled and delivered entirely on your device. We may use a device token or push token; this is only used for delivering occasional notifications and is not used for marketing.</p>
-      </div>
-      <div class="policy-block">
-        <strong>Widgets & Live Activities</strong>
-        <p>Prayer times and countdowns shown on the Home Screen, Lock Screen, and Dynamic Island are generated on your device from your chosen location and settings. No personal data is sent to third parties for widgets or Live Activities.</p>
-      </div>
-      <div class="policy-block">
-        <strong>Quran Radio</strong>
-        <p>Streaming is provided by a third-party (mp3quran.net). Their own policies may apply to any data involved in streaming.</p>
-      </div>
-      <div class="policy-block">
-        <strong>Data we do not sell</strong>
-        <p>We do not sell your personal data. We do not use your data for advertising or cross-app tracking.</p>
-      </div>
-      <div class="policy-block">
-        <strong>Changes</strong>
-        <p>We may update this policy from time to time. The current text is always available in the app under Settings.</p>
-      </div>
-      <div class="policy-block">
-        <strong>Contact</strong>
-        <p>For questions about this policy or the App, reach out via the contact option in the About section of the app, or at <a href="mailto:ios707@proton.me">ios707@proton.me</a>.</p>
-      </div>
-    </section>
+        <div class="policy-block">
+          <strong>Location</strong>
+          <p>The App uses your device location (or a location you choose) only to compute prayer times, moon data, and Qibla direction. Location can be stored on device for widgets and for your chosen city. We do not collect or store your location on our servers for advertising or tracking.</p>
+        </div>
+        <div class="policy-block">
+          <strong>Notifications</strong>
+          <p>Pre-athan, athan, iqama reminders, and Live Activity triggers are all local: they are scheduled and delivered entirely on your device. We may use a device token or push token; this is only used for delivering occasional notifications and is not used for marketing.</p>
+        </div>
+        <div class="policy-block">
+          <strong>Widgets & Live Activities</strong>
+          <p>Prayer times and countdowns shown on the Home Screen, Lock Screen, and Dynamic Island are generated on your device from your chosen location and settings. No personal data is sent to third parties for widgets or Live Activities.</p>
+        </div>
+        <div class="policy-block">
+          <strong>Quran Radio</strong>
+          <p>Streaming is provided by a third-party (mp3quran.net). Their own policies may apply to any data involved in streaming.</p>
+        </div>
+        <div class="policy-block">
+          <strong>Data we do not sell</strong>
+          <p>We do not sell your personal data. We do not use your data for advertising or cross-app tracking.</p>
+        </div>
+        <div class="policy-block">
+          <strong>Changes</strong>
+          <p>We may update this policy from time to time. The current text is always available in the app under Settings.</p>
+        </div>
+        <div class="policy-block">
+          <strong>Contact</strong>
+          <p>For questions about this policy or the App, reach out via the contact option in the About section of the app, or at <a href="mailto:ios707@proton.me">ios707@proton.me</a>.</p>
+        </div>
+      </section>
 
-    <footer>
-      <p>© 2025 AlAthan. All rights reserved.</p>
-    </footer>
+      <footer>
+        <p>© 2026 AlAthan. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <!-- Arabic -->
+    <div id="content-ar" class="content" lang="ar" dir="rtl" style="display: none;">
+      <section id="support-ar">
+        <h2>الدعم</h2>
+        <p>تحتاج مساعدة أو لديك ملاحظات أو سؤال عن الأذان؟ نحن هنا من أجلك.</p>
+        <span class="contact-label">البريد الإلكتروني</span>
+        <div class="contact-box">
+          <a href="mailto:ios707@proton.me">ios707@proton.me</a>
+        </div>
+      </section>
+
+      <section id="privacy-ar">
+        <h2>سياسة الخصوصية</h2>
+        <p>تطبيق الأذان يوفّر أوقات الصلاة واتجاه القبلة والميزات المرتبطة. هذه السياسة تصف كيفية تعاملنا مع المعلومات.</p>
+
+        <div class="policy-block">
+          <strong>الموقع</strong>
+          <p>التطبيق يستخدم موقع جهازك (أو موقعاً تختاره) فقط لحساب أوقات الصلاة وبيانات القمر واتجاه القبلة. قد يُحفظ الموقع على الجهاز للودجات ومدينتك المختارة. نحن لا نجمع ولا نخزّن موقعك على خوادمنا للإعلان أو التتبع.</p>
+        </div>
+        <div class="policy-block">
+          <strong>الإشعارات</strong>
+          <p>تذكيرات ما قبل الأذان والأذان والإقامة وتفعيل النشاط المباشر كلها محلية: تُجدول وتُقدّم بالكامل على جهازك. قد نستخدم رمز جهاز أو رمز دفع؛ وهو يُستخدم فقط لتوصيل إشعارات عرضية وليس للتسويق.</p>
+        </div>
+        <div class="policy-block">
+          <strong>الودجات والأنشطة المباشرة</strong>
+          <p>أوقات الصلاة والعد التنازلي المعروضة على الشاشة الرئيسية وقفل الشاشة والداينامك آيلاند تُنشأ على جهازك من موقعك وإعداداتك. لا تُرسل بيانات شخصية لأطراف ثالثة للودجات أو الأنشطة المباشرة.</p>
+        </div>
+        <div class="policy-block">
+          <strong>راديو القرآن</strong>
+          <p>البثّ يوفّره طرف ثالث (mp3quran.net). سياساتهم الخاصة قد تنطبق على أي بيانات مرتبطة بالبث.</p>
+        </div>
+        <div class="policy-block">
+          <strong>ما لا نبيعه</strong>
+          <p>نحن لا نبيع بياناتك الشخصية. لا نستخدم بياناتك للإعلان أو التتبع بين التطبيقات.</p>
+        </div>
+        <div class="policy-block">
+          <strong>التغييرات</strong>
+          <p>قد نحدّث هذه السياسة من وقت لآخر. النص الحالي متاح دائماً في الإعدادات.</p>
+        </div>
+        <div class="policy-block">
+          <strong>الاتصال</strong>
+          <p>للاستفسارات عن هذه السياسة أو التطبيق، تواصل معنا عبر خيار الاتصال في قسم حول، أو على <a href="mailto:ios707@proton.me">ios707@proton.me</a>.</p>
+        </div>
+      </section>
+
+      <footer>
+        <p>© 2026 الأذان. جميع الحقوق محفوظة.</p>
+      </footer>
+    </div>
   </div>
+
+  <script>
+    (function() {
+      var langEn = document.getElementById('lang-en');
+      var langAr = document.getElementById('lang-ar');
+      var contentEn = document.getElementById('content-en');
+      var contentAr = document.getElementById('content-ar');
+      var tagline = document.querySelector('.tagline');
+
+      function setLang(lang) {
+        if (lang === 'ar') {
+          contentEn.classList.remove('active');
+          contentEn.style.display = 'none';
+          contentAr.classList.add('active');
+          contentAr.style.display = 'block';
+          document.body.setAttribute('dir', 'rtl');
+          document.body.setAttribute('lang', 'ar');
+          document.documentElement.setAttribute('lang', 'ar');
+          langEn.classList.remove('active');
+          langAr.classList.add('active');
+          if (tagline && tagline.dataset.ar) tagline.textContent = tagline.dataset.ar;
+        } else {
+          contentAr.classList.remove('active');
+          contentAr.style.display = 'none';
+          contentEn.classList.add('active');
+          contentEn.style.display = 'block';
+          document.body.setAttribute('dir', 'ltr');
+          document.body.setAttribute('lang', 'en');
+          document.documentElement.setAttribute('lang', 'en');
+          langAr.classList.remove('active');
+          langEn.classList.add('active');
+          if (tagline && tagline.dataset.en) tagline.textContent = tagline.dataset.en;
+        }
+      }
+
+      langEn.addEventListener('click', function(e) { e.preventDefault(); setLang('en'); });
+      langAr.addEventListener('click', function(e) { e.preventDefault(); setLang('ar'); });
+    })();
+  </script>
 </body>
 </html>
