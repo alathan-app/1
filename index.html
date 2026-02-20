@@ -205,7 +205,7 @@
 
         <div class="policy-block">
           <strong>Location</strong>
-          <p>The App uses your device location (or a location you choose) only to compute prayer times, moon data, and Qibla direction. Location can be stored on device for widgets and for your chosen city. We do not collect or store your location on our servers for advertising or tracking.</p>
+          <p>The App uses your device location (or a location you choose) only to compute prayer times, moon data, and Qibla direction on your device. Location may be stored on your device for widgets and for your chosen city. We do not collect or store your location on our servers.</p>
         </div>
         <div class="policy-block">
           <strong>Notifications</strong>
@@ -255,7 +255,7 @@
 
         <div class="policy-block">
           <strong>الموقع</strong>
-          <p>التطبيق يستخدم موقع جهازك (أو موقعاً تختاره) فقط لحساب أوقات الصلاة وبيانات القمر واتجاه القبلة. قد يُحفظ الموقع على الجهاز للودجات ومدينتك المختارة. نحن لا نجمع ولا نخزّن موقعك على خوادمنا للإعلان أو التتبع.</p>
+          <p>التطبيق يستخدم موقع جهازك (أو موقعاً تختاره) فقط لحساب أوقات الصلاة وبيانات القمر واتجاه القبلة على جهازك. قد يُحفظ الموقع على الجهاز للودجات ومدينتك المختارة. نحن لا نجمع ولا نخزّن موقعك على خوادمنا.</p>
         </div>
         <div class="policy-block">
           <strong>الإشعارات</strong>
@@ -325,6 +325,26 @@
 
       langEn.addEventListener('click', function(e) { e.preventDefault(); setLang('en'); });
       langAr.addEventListener('click', function(e) { e.preventDefault(); setLang('ar'); });
+
+      function scrollToHash() {
+        var hash = window.location.hash.slice(1);
+        if (!hash) return;
+        if (hash === 'privacy-ar' || hash === 'support-ar') {
+          setLang('ar');
+          setTimeout(function() {
+            var el = document.getElementById(hash);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 50);
+        } else if (hash === 'privacy' || hash === 'support') {
+          setLang('en');
+          setTimeout(function() {
+            var el = document.getElementById(hash);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 50);
+        }
+      }
+      if (window.location.hash) scrollToHash();
+      window.addEventListener('hashchange', scrollToHash);
     })();
   </script>
 </body>
